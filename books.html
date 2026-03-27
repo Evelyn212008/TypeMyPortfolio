@@ -88,31 +88,29 @@
     <a href="index.html" class="back-link">← Back to Portfolio</a>
 </div>
 <script>
-    function selectProduct(bookName, price) {
-  // 1. Find the input box using its ID
-  const displayBox = document.getElementById('product-display');
-  
-  // 2. Put the book details into the box
-  displayBox.value = bookName + " - " + price;
-  
-  // 3. Scroll down so the user sees the form
-  document.getElementById('order-form-section').scrollIntoView({ behavior: 'smooth' });
-}
-    const searchInput = document.getElementById('bookSearch');
-    const bookCards = document.querySelectorAll('.book-card');
+    <script>
+  // Your search bar code
+  const searchInput = document.getElementById('bookSearch');
+  const bookCards = document.querySelectorAll('.book-card');
 
-    searchInput.addEventListener('input', () => {
-        const filter = searchInput.value.toLowerCase();
-        
-        bookCards.forEach(card => {
-            const title = card.querySelector('.book-title').innerText.toLowerCase();
-            if (title.includes(filter)) {
-                card.style.display = ""; // Show the book
-            } else {
-                card.style.display = "none"; // Hide the book
-            }
-        });
+  searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase();
+    bookCards.forEach(card => {
+      const title = card.querySelector('.book-title').innerText.toLowerCase();
+      card.style.display = title.includes(filter) ? "" : "none";
     });
+  });
+
+  // THE FIX: This is the function the buttons are looking for
+  function selectProduct(bookName, price) {
+    const displayBox = document.getElementById('product-display');
+    if (displayBox) {
+      displayBox.value = bookName + " - " + price;
+      // This slides the page down to the form
+      document.getElementById('order-form-section').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
 </script>
 </body>
 </html>
