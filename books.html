@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Digital Bookshelf</title>
+    <style>
+        body { font-family: 'Georgia', serif; background-color: #fdf5e6; color: #4a3728; margin: 0; padding: 20px; }
+        .shelf-container { max-width: 800px; margin: auto; text-align: center; }
+        h1 { border-bottom: 4px solid #8b4513; padding-bottom: 10px; color: #8b4513; }
+        .book-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+        .book-card { background: white; padding: 15px; border-left: 10px solid #8b4513; box-shadow: 3px 3px 10px rgba(0,0,0,0.1); border-radius: 5px; text-align: left; }
+        .book-title { font-weight: bold; font-size: 1.2em; display: block; color: #2e1a0b; }
+        .author { font-style: italic; color: #6d4c41; }
+        .genre { background: #efebe9; font-size: 0.8em; padding: 2px 8px; border-radius: 10px; margin-top: 5px; display: inline-block; }
+        .back-link { margin-top: 40px; display: block; color: #8b4513; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="shelf-container">
+    <h1>📚 My Personal Library</h1>
+    <p>A collection of books that have shaped my journey.</p>
+
+    <div class="book-grid">
+        <div class="book-card">
+            <span class="book-title">The Alchemist</span>
+            <span class="author">by Paulo Coelho</span><br>
+            <span class="genre">Adventure</span>
+            <p>A beautiful story about following your dreams.</p>
+        </div>
+
+        <div class="book-card">
+            <span class="book-title">Atomic Habits</span>
+            <span class="author">by James Clear</span><br>
+            <span class="genre">Self-Help</span>
+            <p>How tiny changes lead to remarkable results.</p>
+        </div>
+
+        <div class="book-card">
+            <span class="book-title">Code Complete</span>
+            <span class="author">by Steve McConnell</span><br>
+            <span class="genre">Programming</span>
+            <p>Essential reading for any aspiring developer.</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+</div>
+
+</body>
+</html>
