@@ -3,6 +3,12 @@
 <head>
     <title>My Digital Bookshelf</title>
     <style>
+        .book-card:hover {
+    transform: translateY(-10px); /* Lifts the card up */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Adds a soft shadow */
+    transition: all 0.3s ease; /* Makes the movement smooth */
+    border-color: #ff9800; /* Changes border to orange on hover */
+}
         body { font-family: 'Georgia', serif; background-color: #fdf5e6; color: #4a3728; margin: 0; padding: 20px; }
         .shelf-container { max-width: 800px; margin: auto; text-align: center; }
         h1 { border-bottom: 4px solid #8b4513; padding-bottom: 10px; color: #8b4513; }
