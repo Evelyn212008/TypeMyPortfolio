@@ -28,8 +28,7 @@
   </div>
 
   <div class="product-card">
-    <button type="button"
-     onclick="selectProduct('Spiral Dot Grid','$15.00')">Order Now</button>
+    <button type="button" onclick="selectProduct('Spiral Dot Grid','$15.00')">Order Now</button>
   </div>
 </section>
 
@@ -89,6 +88,16 @@
     <a href="index.html" class="back-link">← Back to Portfolio</a>
 </div>
 <script>
+    function selectProduct(bookName, price) {
+  // 1. Find the input box using its ID
+  const displayBox = document.getElementById('product-display');
+  
+  // 2. Put the book details into the box
+  displayBox.value = bookName + " - " + price;
+  
+  // 3. Scroll down so the user sees the form
+  document.getElementById('order-form-section').scrollIntoView({ behavior: 'smooth' });
+}
     const searchInput = document.getElementById('bookSearch');
     const bookCards = document.querySelectorAll('.book-card');
 
