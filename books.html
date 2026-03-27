@@ -24,17 +24,12 @@
 
     <section class="shop-container">
   <div class="product-card">
-    <img src="leather-notebook.jpg" alt="Leather Notebook">
-    <h3>Classic Leather</h3>
-    <p>$25.00</p>
-    <button onclick="selectProduct('Classic Leather')">Order Now</button>
+    <button type="button" onclick="selectProduct('Classic Leather','$25.oo')">Order Now</button>
   </div>
 
   <div class="product-card">
-    <img src="spiral-notebook.jpg" alt="Spiral Notebook">
-    <h3>Spiral Dot Grid</h3>
-    <p>$15.00</p>
-    <button onclick="selectProduct('Spiral Dot Grid')">Order Now</button>
+    <button type="button"
+     onclick="selectProduct('Spiral Dot Grid','$15.00')">Order Now</button>
   </div>
 </section>
 
@@ -43,13 +38,7 @@
   <form action="https://formspree.io/f/YOUR_ID" method="POST" id="main-form">
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="Email" required>
-    
-    <label>Selected Notebook:</label>
-    <select name="product" id="product-dropdown">
-      <option value="Classic Leather">Classic Leather - $25</option>
-      <option value="Spiral Dot Grid">Spiral Dot Grid - $15</option>
-    </select>
-
+    <input type="text" name="product" id="product - display" readonly placeholder="Select a notebook above " required>
     <input type="number" name="quantity" value="1" min="1">
     <textarea name="address" placeholder="Shipping Address" required></textarea>
     
