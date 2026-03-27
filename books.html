@@ -21,30 +21,23 @@
     </style>
 </head>
 <body>
-
-    <section class="shop-container">
+ <section class="shop-container">
   <div class="product-card">
     <button type="button" onclick="selectProduct('Classic Leather','$25.oo')">Order Now</button>
   </div>
-
   <div class="product-card">
     <button type="button" onclick="selectProduct('Spiral Dot Grid','$15.00')">Order Now</button>
   </div>
 </section>
-
 <section id="order-form-section">
-  <h2>Complete Your Order</h2>
   <form action="https://formspree.io/f/YOUR_ID" method="POST" id="main-form">
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="text" name="product" id="product - display" readonly placeholder="Select a notebook above " required>
     <input type="number" name="quantity" value="1" min="1">
-    <input type="text" name="product" id="product - display" readonly placeholder="Select a notebook above" required>
-    
     <button type="submit">Send Order Request</button>
   </form>
 </section>
-
 <div class="shelf-container">
     <h1>📚 My Personal Library</h1>
     <div style="margin: 20px 0;">
@@ -65,7 +58,6 @@
             <div style="color: #ff9800; margin-top: 5px;">★★★★★</div>
             <p>A beautiful story about following your dreams.</p>
         </div>
-
         <div class="book-card">
           <img src="https://m.media-amazon.com/images/I/91bYsX41DVL.jpg" alt="Atomic Habits Cover" style="width: 100px; margin-bottom: 10px; border-radius: 3px;">
             <span class="book-title">Atomic Habits</span>
@@ -74,7 +66,6 @@
             <div style="color: #ff9800; margin-top: 5px;">★★★★★</div>
             <p>How tiny changes lead to remarkable results.</p>
         </div>
-
         <div class="book-card">
          <img src="https://m.media-amazon.com/images/I/81gepf1eMqL.jpg" alt="Mockingbird Cover" style="width: 100px; margin-bottom: 10px; border-radius: 3px;">
             <span class="book-title">To Kill a Mockingbird </span> 
@@ -84,15 +75,11 @@
             <p>Racial injustice and loss of innocence.</p>
         </div>
     </div>
-
     <a href="index.html" class="back-link">← Back to Portfolio</a>
 </div>
 <script>
-    
-  // Your search bar code
   const searchInput = document.getElementById('bookSearch');
   const bookCards = document.querySelectorAll('.book-card');
-
   searchInput.addEventListener('input', () => {
     const filter = searchInput.value.toLowerCase();
     bookCards.forEach(card => {
@@ -100,7 +87,6 @@
       card.style.display = title.includes(filter) ? "" : "none";
     });
   });
-
   // THE FIX: This is the function the buttons are looking for
   function selectProduct(bookName, price) {
     const displayBox = document.getElementById('product - display');
@@ -110,7 +96,6 @@
       document.getElementById('order - form - section').scrollIntoView({ behavior: 'smooth' });
     }
   }
-</script>
 </script>
 </body>
 </html>
