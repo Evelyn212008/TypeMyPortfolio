@@ -39,7 +39,7 @@
     <input type="email" name="email" placeholder="Email" required>
     <input type="text" name="product" id="product - display" readonly placeholder="Select a notebook above " required>
     <input type="number" name="quantity" value="1" min="1">
-    <textarea name="address" placeholder="Shipping Address" required></textarea>
+    <input type="text" name="product" id="product - display" readonly placeholder="Select a notebook above" required>
     
     <button type="submit">Send Order Request</button>
   </form>
@@ -103,11 +103,11 @@
 
   // THE FIX: This is the function the buttons are looking for
   function selectProduct(bookName, price) {
-    const displayBox = document.getElementById('product-display');
+    const displayBox = document.getElementById('product - display');
     if (displayBox) {
       displayBox.value = bookName + " - " + price;
       // This slides the page down to the form
-      document.getElementById('order-form-section').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('order - form - section').scrollIntoView({ behavior: 'smooth' });
     }
   }
 </script>
