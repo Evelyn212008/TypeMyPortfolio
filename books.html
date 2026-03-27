@@ -22,6 +22,41 @@
 </head>
 <body>
 
+    <section class="shop-container">
+  <div class="product-card">
+    <img src="leather-notebook.jpg" alt="Leather Notebook">
+    <h3>Classic Leather</h3>
+    <p>$25.00</p>
+    <button onclick="selectProduct('Classic Leather')">Order Now</button>
+  </div>
+
+  <div class="product-card">
+    <img src="spiral-notebook.jpg" alt="Spiral Notebook">
+    <h3>Spiral Dot Grid</h3>
+    <p>$15.00</p>
+    <button onclick="selectProduct('Spiral Dot Grid')">Order Now</button>
+  </div>
+</section>
+
+<section id="order-form-section">
+  <h2>Complete Your Order</h2>
+  <form action="https://formspree.io/f/YOUR_ID" method="POST" id="main-form">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    
+    <label>Selected Notebook:</label>
+    <select name="product" id="product-dropdown">
+      <option value="Classic Leather">Classic Leather - $25</option>
+      <option value="Spiral Dot Grid">Spiral Dot Grid - $15</option>
+    </select>
+
+    <input type="number" name="quantity" value="1" min="1">
+    <textarea name="address" placeholder="Shipping Address" required></textarea>
+    
+    <button type="submit">Send Order Request</button>
+  </form>
+</section>
+
 <div class="shelf-container">
     <h1>📚 My Personal Library</h1>
     <div style="margin: 20px 0;">
