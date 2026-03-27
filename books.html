@@ -59,6 +59,22 @@
 
     <a href="index.html" class="back-link">← Back to Portfolio</a>
 </div>
+<script>
+    const searchInput = document.getElementById('bookSearch');
+    const bookCards = document.querySelectorAll('.book-card');
 
+    searchInput.addEventListener('input', () => {
+        const filter = searchInput.value.toLowerCase();
+        
+        bookCards.forEach(card => {
+            const title = card.querySelector('.book-title').innerText.toLowerCase();
+            if (title.includes(filter)) {
+                card.style.display = ""; // Show the book
+            } else {
+                card.style.display = "none"; // Hide the book
+            }
+        });
+    });
+</script>
 </body>
 </html>
