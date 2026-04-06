@@ -1,45 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Book Store</title>
+    <title>My Digital Bookshelf</title>
+    <style>
+        .book-card:hover {
+    transform: translateY(-10px); /* Lifts the card up */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Adds a soft shadow */
+    transition: all 0.3s ease; /* Makes the movement smooth */
+    border-color: #ff9800; /* Changes border to orange on hover */
+}
+        body { font-family: 'Georgia', serif; background-color: #fdf5e6; color: #4a3728; margin: 0; padding: 20px; }
+        .shelf-container { max-width: 800px; margin: auto; text-align: center; }
+        h1 { border-bottom: 4px solid #8b4513; padding-bottom: 10px; color: #8b4513; }
+        .book-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+        .book-card { background: white; padding: 15px; border-left: 10px solid #8b4513; box-shadow: 3px 3px 10px rgba(0,0,0,0.1); border-radius: 5px; text-align: left; }
+        .book-title { font-weight: bold; font-size: 1.2em; display: block; color: #2e1a0b; }
+        .author { font-style: italic; color: #6d4c41; }
+        .genre { background: #efebe9; font-size: 0.8em; padding: 2px 8px; border-radius: 10px; margin-top: 5px; display: inline-block; }
+        .back-link { margin-top: 40px; display: block; color: #8b4513; text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h1>Add a New Book</h1>
-<section id="order-section">
-    <h2>Place a New Order</h2>
-    <form action="/order" method="POST">
-        <input type="text" name="title" placeholder="Book Title" required> 
-        <input type="text" name="author" placeholder="Author Name" required>
-        <button type="submit">Order Now</button>
-    </form>
+ <section class="shop-container">
+  <div class="product-card">
+    <button type="button" onclick="selectProduct('Classic Leather','$25.oo')">Order Now</button>
+  </div>
 </section>
-    <script>
-        async function saveBook() {
-            const title = document.getElementById('title').value;
-            const author = document.getElementById('author').value;
+<section id="order-form-section">
+  <form action="https://formspree.io/f/mkopbgzk" method="POST" id="main-form">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="product" id="product - display" readonly placeholder="Select a notebook above " required>
+    <input type="number" name="quantity" value="1" min="1">
+    <button type="submit">Send Order Request</button>
+  </form>
+</section>
+<div class="shelf-container">
+    <h1>📚 My Personal Library</h1>
+    <div style="margin: 20px 0;">
+    <input type="text" id="bookSearch" placeholder="Search for a book..." 
+        style="padding: 10px; width: 60%; border: 2px solid #8b4513; border-radius: 20px; outline: none;">
+    <button style="padding: 10px 20px; background-color: #8b4513; color: white; border: none; border-radius: 20px; cursor: pointer;">
+        Search
+    </button>
+</div>
+    <p>A collection of books that have shaped my journey.</p>
 
-            // This matches the address your server is running on
-            const url = 'http://localhost:5000/api/books'; 
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title, author })
-                });
-
-                const result = await response.json();
-                
-                if (response.ok) {
-                    alert("✅ Success: " + result.message);
-                } else {
-                    alert("❌ Error: " + result.error);
-                }
-            } catch (error) {
-                alert("❌ Could not connect. Make sure your terminal says 'Server running'!");
-            }
-        }
-    </script>
+    <div class="book-grid">
+        <div class="book-card">
+            <img src="https://m.media-amazon.com/images/I/51Z0nLAfLmL.jpg" alt="Alchemist Cover" style="width: 100px; margin-bottom: 10px; border-radius: 3px;">
+            <span class="book-title">Alchemist</span>
+            <span class="author">by Paulo Coelho</span><br>
+            <span class="genre">Adventure</span>
+            <div style="color: #ff9800; margin-top: 5px;">★★★★★</div>
+            <p>A beautiful story about following your dreams.</p>
+        </div>
+        <div class="book-card">
+          <img src="https://m.media-amazon.com/images/I/91bYsX41DVL.jpg" alt="Atomic Habits Cover" style="width: 100px; margin-bottom: 10px; border-radius: 3px;">
+            <span class="book-title">Atomic Habits</span>
+            <span class="author">by James Clear</span><br>
+            <span class="genre">Self-Help</span>
+            <div style="color: #ff9800; margin-top: 5px;">★★★★★</div>
+            <p>How tiny changes lead to remarkable results.</p>
+        </div>
+        <div class="book-card">
+         <img src="https://m.media-amazon.com/images/I/81gepf1eMqL.jpg" alt="Mockingbird Cover" style="width: 100px; margin-bottom: 10px; border-radius: 3px;">
+            <span class="book-title">To Kill a Mockingbird </span> 
+            <span class="author">by Harper Lee</span><br>
+            <span class="genre">Social Commentary</span>
+            <div style="color: #ff9800; margin-top: 5px;">★★★★★</div>
+            <p>Racial injustice and loss of innocence.</p>
+        </div>
+    </div>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+</div>
+<script>
+  const searchInput = document.getElementById('bookSearch');
+  const bookCards = document.querySelectorAll('.book-card');
+  searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase();
+    bookCards.forEach(card => {
+      const title = card.querySelector('.book-title').innerText.toLowerCase();
+      card.style.display = title.includes(filter) ? "" : "none";
+    });
+  });
+  // THE FIX: This is the function the buttons are looking for
+  function selectProduct(bookName, price) {
+    const displayBox = document.getElementById('product - display');
+    if (displayBox) {
+      displayBox.value = bookName + " - " + price;
+      // This slides the page down to the form
+      document.getElementById('order - form - section').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
 </body>
 </html>
